@@ -25,6 +25,7 @@ const Pagination = ({ postsPerPage, totalPosts, paginate, currentPage }) => {
   return (
     <nav style={{ display: 'flex' }}>
       <a
+        style={{ textDecoration: 'none', color: 'dodgerblue' }}
         href='!#'
         onClick={() => {
           leftClick(currentPage);
@@ -33,9 +34,19 @@ const Pagination = ({ postsPerPage, totalPosts, paginate, currentPage }) => {
       </a>
       <ul style={{ display: 'flex', listStyle: 'none' }}>
         {pageNumbers.map((number) => (
-          <li style={{ padding: '5px 5px' }} key={number}>
+          <li
+            style={{
+              padding: '5px 5px',
+              textDecoration: 'none',
+            }}
+            key={number}>
             {
               <a
+                className={`${currentPage === number ? 'active' : ''}`}
+                style={{
+                  textDecoration: 'none',
+                  color: currentPage === number ? 'red' : 'dodgerblue',
+                }}
                 onClick={() => {
                   paginate(number);
                 }}
@@ -47,6 +58,7 @@ const Pagination = ({ postsPerPage, totalPosts, paginate, currentPage }) => {
         ))}
       </ul>
       <a
+        style={{ textDecoration: 'none', color: 'dodgerblue' }}
         onClick={() => {
           rightClick(currentPage);
         }}
